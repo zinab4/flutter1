@@ -1,0 +1,32 @@
+ plugins {
+  id 'com.android.application'
+
+  // Add the Google services Gradle plugin
+  id 'com.google.gms.google-services'
+
+}
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
+    mavenCentral()
+    {}
+    dependencies {
+                classpath 'com.google.gms:google-services:4.3.14'
+                implementation 'com.google.firebase:firebase-analytics'
+                implementation platform('com.google.firebase:firebase-bom:33.8.0')
+    }
